@@ -5,5 +5,5 @@ abstract public class Validador {
 
     abstract public boolean esValido(String valor);
     abstract public String getMensaje();
-    abstract public void setMensaje();
+    abstract public void setMensaje(String mensaje);
 }
