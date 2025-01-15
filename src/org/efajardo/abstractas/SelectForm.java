@@ -19,8 +19,9 @@ public class SelectForm extends ElementoForm{
         this.opciones = opciones;
     }
 
-    public void addOpcion(Opcion opcion){
+    public SelectForm addOpcion(Opcion opcion){
         this.opciones.add(opcion);
+        return this;
     }
 
     @Override
@@ -28,16 +29,18 @@ public class SelectForm extends ElementoForm{
         StringBuilder sb = new StringBuilder("<select ");
         sb.append("name='");
         sb.append(this.nombre);
-        sb.append(">'");
+        sb.append("'>");
         for (Opcion opcion : this.opciones){
             sb.append("\n<option value='")
                     .append(opcion.getValor())
                     .append("'");
             if (opcion.isSelected()){
                 sb.append(" selected");
+                this.valor = opcion.getValor();
             }
             sb.append(">").append(opcion.getNombre()).append("</option>");
         }
+        sb.append("</select>");
         return sb.toString();
     }
 }
